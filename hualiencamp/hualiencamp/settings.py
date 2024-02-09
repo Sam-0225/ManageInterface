@@ -40,11 +40,8 @@ INSTALLED_APPS = [
     'rest_framework', #RESTful API
     'rest_framework.authtoken', #DRF自己的Token認證
     'django_filters',
-    'campsite',
     'mainapp',
     'booking',
-    'tenttype',
-    'pricing',
     'payment',
     'userinfo',
 ]
