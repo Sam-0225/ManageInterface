@@ -1,43 +1,47 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="container">
-    <div class="mb-2">
-        <a href="#" class="btn btn-success">
-            <i class="me-2 fa-solid fa-circle-plus"></i>
-            新增管理員
-        </a>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            <i class="me-2 fa-solid fa-list"></i>
-            管理員列表
+    <div class="container">
+        <div class="d-flex align-items-center mb-2">
+            <a href="#" class="btn btn-success  me-auto">
+                <i class="me-2 fa-solid fa-circle-plus"></i>
+                新增管理員
+            </a>
+            <form class="d-flex flex-row align-items-center">
+                <input class="form-control me-2" type="search" placeholder="Search for..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">搜尋</button>
+            </form>
         </div>
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">帳號</th>
-                    <th scope="col">密碼</th>
-                    <th scope="col">操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for rec in queryset %}
+        <div class="card">
+            <div class="card-header">
+                <i class="me-2 fa-solid fa-list"></i>
+                管理員列表
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ rec.id }}</th>
-                        <td>{{ rec.username }}</td>
-                        <td>******</td>
-                        <td>
-                            <a href="#" class="btn btn-outline-primary btn-sm" role="button">編輯</a>
-                            <a href="#" class="btn btn-outline-danger btn-sm" role="button">刪除</a>
-                        </td>
+                        <th scope="col">ID</th>
+                        <th scope="col">帳號</th>
+                        <th scope="col">密碼</th>
+                        <th scope="col">操作</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for rec in queryset %}
+                        <tr>
+                            <th scope="row">{{ rec.id }}</th>
+                            <td>{{ rec.username }}</td>
+                            <td>******</td>
+                            <td>
+                                <a href="#" class="btn btn-outline-primary btn-sm" role="button">編輯</a>
+                                <a href="#" class="btn btn-outline-danger btn-sm" role="button">刪除</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
