@@ -6,5 +6,8 @@ app_name = 'OSG'
 urlpatterns = [
     path('', index.home, name='home'),  # 將首頁路徑映射到 home view
 
+    #管理員的管理
     path('admin/list', admin.admin_list),
+
+    #會員的管理
 ]
