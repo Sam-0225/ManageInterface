@@ -7,7 +7,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hualiencamp.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'OceanSunlitGlamping.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

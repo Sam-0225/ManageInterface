@@ -1,5 +1,5 @@
 """
-URL configuration for hualiencamp project.
+URL configuration for OceanSunlitGlamping project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -20,5 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')), #DRF的登錄退出
     path('admin/', admin.site.urls),
-    path('', include('mainapp.urls')),
+    path('', include('OSG.urls')),
 ]
