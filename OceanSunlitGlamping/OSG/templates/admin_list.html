@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="mb-2">
+        <a href="#" class="btn btn-success">
+            <i class="me-2 fa-solid fa-circle-plus"></i>
+            新增管理員
+        </a>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <i class="me-2 fa-solid fa-list"></i>
+            管理員列表
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">帳號</th>
+                    <th scope="col">密碼</th>
+                    <th scope="col">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>
+                        <a href="#" class="btn btn-outline-primary btn-sm" role="button">編輯</a>
+                        <a href="#" class="btn btn-outline-danger btn-sm" role="button">刪除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

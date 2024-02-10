@@ -1,8 +1,10 @@
-from django.urls import path, include
-from .views import home
+from django.urls import path
+from OSG.views import index, admin
 
 app_name = 'OSG'
 
 urlpatterns = [
-    path('', home, name= 'home'),# 將首頁路徑映射到 home 視圖
+    path('', index.home, name='home'),  # 將首頁路徑映射到 home view
+
+    path('admin/list', admin.admin_list),
 ]
