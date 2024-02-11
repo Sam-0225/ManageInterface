@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from OSG import models
-
+from OSG.utils.paginator import Paginator
+import copy
 
 def admin_list(request):
     """管理員列表"""
@@ -11,8 +12,13 @@ def admin_list(request):
         data_dict['username__contains'] = value
 
     queryset = models.Admin.objects.filter(**data_dict)  # .order_by('-id')遞減排序
+
+    page_obj = Paginator(request, queryset)
+
     context = {
-        'queryset': queryset,
-        'search_fields': value
+        'search_fields': value,
+        'queryset': page_obj.page_queryset,  # 分完頁的資料
+        'page_string': page_obj.html()       # 頁碼
     }
     return render(request, 'admin_list.html', context)
+
