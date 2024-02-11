@@ -7,9 +7,9 @@
                 <i class="me-2 fa-solid fa-circle-plus"></i>
                 新增管理員
             </a>
-            <form class="d-flex flex-row align-items-center">
-                <input class="form-control me-2" type="search" placeholder="Search for..." aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">搜尋</button>
+            <form class="d-flex flex-row" method="get">
+                <input class="form-control me-2" name="q" value="{{ search_fields }}" type="search" placeholder="Search for..." aria-label="search">
+                <button class="btn btn-outline-secondary text-nowrap" type="submit" aria-label="search"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
         <div class="card">
