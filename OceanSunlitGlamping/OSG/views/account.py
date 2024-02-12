@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django import forms
+from django.urls import reverse
 
 from OSG import models
 from OSG.utils.bootstrapStyle import BootstrapForm
@@ -37,7 +38,7 @@ def login_view(request):
         # 帳號密碼正確
         # 網站生成隨機字串；寫到客戶端瀏覽器cookie中，再寫入到session中；
         request.session['info'] = {'id': admin_obj.id, 'username': admin_obj.username}
-        return redirect('/admin/list/')
+        return redirect(reverse('OSG:admin_list'))
 
     return render(request, 'login.html', {'form': form})
 
@@ -55,4 +56,4 @@ def captcha_view(request):
 def logout_view(request):
     """登出"""
     request.session.flush()
-    return redirect('/login/')
+    return redirect(reverse('OSG:login'))

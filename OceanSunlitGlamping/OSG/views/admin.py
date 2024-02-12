@@ -1,6 +1,8 @@
 from django.core.exceptions import ValidationError
 from django.http import Http404
 from django.shortcuts import render, redirect
+from django.urls import reverse
+
 from OSG import models
 from OSG.utils.paginator import Paginator
 from OSG.utils.encrypt import md5
@@ -64,7 +66,7 @@ def admin_add_view(request):
     form = AdminModelForm(data=request.POST)
     if form.is_valid():
         form.save()
-        return redirect('/admin/list/')
+        return redirect(reverse('OSG:admin_list'))
 
     return render(request, 'data_add.html', {'form': form, 'title': title})
 
@@ -82,12 +84,13 @@ def admin_edit_view(request, nid):
     form = AdminModelForm(data=request.POST, instance=row_object)
     if form.is_valid():
         form.save()
-        return redirect('/admin/list/')
+        return redirect(reverse('OSG:admin_list'))
     return render(request, 'data_add.html', {'form': form, 'title': title})
+
 
 def admin_del_view(request, nid):
     """刪除管理員"""
     models.Admin.objects.filter(id=nid).delete()
-    return redirect('/admin/list/')
+    return redirect(reverse('OSG:admin_list'))
 
 

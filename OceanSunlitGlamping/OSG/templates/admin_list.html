@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container">
         <div class="d-flex align-items-center mb-2">
-            <a href="/admin/add/" class="btn btn-success  me-auto">
+            <a href="{% url 'OSG:admin_add' %}" class="btn btn-success  me-auto">
                 <i class="me-2 fa-solid fa-circle-plus"></i>
                 新增管理員
             </a>
@@ -34,8 +34,8 @@
                             <td>{{ rec.username }}</td>
                             <td>******</td>
                             <td>
-                                <a href="/admin/{{ rec.id }}/edit/" class="btn btn-outline-primary btn-sm" role="button">編輯</a>
-                                <a href="/admin/{{ rec.id }}/delete/" class="btn btn-outline-danger btn-sm" role="button">刪除</a>
+                                <a href="{% url 'OSG:admin_edit' nid=rec.id %}" class="btn btn-outline-primary btn-sm" role="button">編輯</a>
+                                <a href="{% url 'OSG:admin_del' nid=rec.id %}" class="btn btn-outline-danger btn-sm" role="button">刪除</a>
                             </td>
                         </tr>
                     {% endfor %}
