@@ -19,4 +19,6 @@ urlpatterns = [
     path('login/', account.login_view),
     # 登出
     path('logout/', account.logout_view),
+    # 登出
+    path('image/captcha/', account.captcha_view, name='captcha'),
 ]

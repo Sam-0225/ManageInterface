@@ -1,4 +1,5 @@
 from django.shortcuts import redirect
+from django.urls import reverse
 from django.utils.deprecation import MiddlewareMixin
 
 
@@ -10,7 +11,7 @@ class AuthMiddleware(MiddlewareMixin):
     def process_request(self, request):
         # 0. 排除不須登入就能訪問的頁面
         # request.path_info 得到目前用戶請求的url
-        if request.path_info == '/login/':
+        if request.path_info in ['/login/', reverse('OSG:captcha')]:
             return
 
         # 1. 讀取送請求之用戶的session，如果能讀到，說明已登入，繼續往後訪問

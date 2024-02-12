@@ -1,9 +1,12 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django import forms
 
 from OSG import models
 from OSG.utils.bootstrapStyle import BootstrapForm
+from OSG.utils.captcha import check_captcha
 from OSG.utils.encrypt import md5
+from io import BytesIO
 
 
 class LoginForm(BootstrapForm):
@@ -24,9 +27,8 @@ def login_view(request):
 
     form = LoginForm(data=request.POST)
     if form.is_valid():
-        # 驗證成功，獲取使用者輸入的資料
-        # 去資料庫驗證是否正確
-        # admin_obj = models.Admin.objects.filter(username=form.cleaned_data.get('username'), password=form.cleaned_data.get('password')).first()
+        # 驗證成功，獲取使用者輸入的資料 去資料庫驗證是否正確 admin_obj = models.Admin.objects.filter(username=form.cleaned_data.get(
+        # 'username'), password=form.cleaned_data.get('password')).first()
         admin_obj = models.Admin.objects.filter(**form.cleaned_data).first()
         if not admin_obj:
             form.add_error('password', '帳號或密碼錯誤')
@@ -38,6 +40,16 @@ def login_view(request):
         return redirect('/admin/list/')
 
     return render(request, 'login.html', {'form': form})
+
+
+def captcha_view(request):
+    """生成圖片驗證碼"""
+    # 呼叫pillow函數，生成圖片
+    img, code_string = check_captcha()
+
+    stream = BytesIO()
+    img.save(stream, 'png')
+    return HttpResponse(stream.getvalue(), content_type='image/png')
 
 
 def logout_view(request):

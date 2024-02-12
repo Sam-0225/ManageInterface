@@ -40,7 +40,18 @@
                 {{ form.password }}
                 <span style="color: red">{{ form.password.errors.0 }}</span>
             </div>
-
+            <div class="form-group mb-3">
+                <label class="form-label fw-bold" for="captcha_id">圖片驗證碼</label>
+                <div class="d-flex flex-row">
+                    <div class="me-2">
+                        <input type="text" name="code" class="form-control" id="captcha_id" placeholder="請輸入圖形驗證碼" required="">
+                        <span style="color: red"></span>
+                    </div>
+                    <div>
+                        <img src="{% url 'OSG:captcha' %}" alt="驗證碼" id="captcha_image" style="width: 125px;">
+                    </div>
+                </div>
+            </div>
             <button class="btn btn-primary " type="submit">登 入</button>
         </form>
     </div>
