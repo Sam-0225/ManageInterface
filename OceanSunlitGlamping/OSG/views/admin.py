@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.http import Http404
 from django.shortcuts import render, redirect
 from OSG import models
 from OSG.utils.paginator import Paginator
@@ -66,3 +67,21 @@ def admin_add_view(request):
         return redirect('/admin/list/')
 
     return render(request, 'data_add.html', {'form': form, 'title': title})
+
+
+def admin_edit_view(request, nid):
+    """編輯管理員"""
+    # 物件 / None
+    row_object = models.Admin.objects.filter(id=nid).first()
+    if not row_object:
+        return render(request, 'error.html', {'msg': '資料不存在'})
+    title = '編輯管理員'
+    if request.method == 'GET':
+        form = AdminModelForm(instance=row_object) # 使用與新增一樣的ModelForm
+        return render(request, 'data_add.html', {'form': form, 'title': title})
+    form = AdminModelForm(data=request.POST, instance=row_object)
+    if form.is_valid():
+        form.save()
+        return redirect('/admin/list/')
+    return render(request, 'data_add.html', {'form': form, 'title': title})
+
