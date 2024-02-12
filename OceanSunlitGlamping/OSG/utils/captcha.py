@@ -1,4 +1,6 @@
 import random
+import string
+
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 
@@ -9,10 +11,14 @@ def check_captcha(width=120, height=30, char_length=5, font_file='monaco.ttf', f
 
     def rnd_char():
         """
-        生成隨機字母
+        生成隨機文字
         :return:
         """
-        return chr(random.randint(65, 90))
+        # result = random.choice([chr(random.randint(65, 90)), str(random.randint(0, 9))])
+        # return result
+        characters = string.ascii_uppercase + string.digits
+        return random.choice(characters)
+
 
     def rnd_color():
         """
