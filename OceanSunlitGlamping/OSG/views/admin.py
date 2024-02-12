@@ -5,7 +5,7 @@ from OSG import models
 from OSG.utils.paginator import Paginator
 from OSG.utils.encrypt import md5
 from django import forms
-from OSG.utils.bootstrap import BootstrapModelForm
+from OSG.utils.bootstrapStyle import BootstrapModelForm
 
 
 def admin_list_view(request):
@@ -48,8 +48,8 @@ class AdminModelForm(BootstrapModelForm):
         return md5(pwd)
 
     def clean_confirm_password(self):
-        conf_password = md5(self.cleaned_data['confirm_password'])
-        if self.cleaned_data['password'] != conf_password:
+        conf_password = md5(self.cleaned_data.get('confirm_password'))
+        if self.cleaned_data.get('password') != conf_password:
             raise ValidationError('密碼不一致')
         return conf_password
 

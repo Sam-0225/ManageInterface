@@ -1,7 +1,7 @@
 from django import forms
 
 
-class BootstrapModelForm(forms.ModelForm):
+class BootstrapStyle:
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # 遍歷ModelForm中所有item的widget做設定
@@ -15,3 +15,12 @@ class BootstrapModelForm(forms.ModelForm):
                     'class': 'form-control',
                     'placeholder': field.label
                 }
+
+
+class BootstrapModelForm(BootstrapStyle, forms.ModelForm):
+    pass
+
+
+class BootstrapForm(BootstrapStyle, forms.Form):
+    pass
+
