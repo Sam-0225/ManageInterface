@@ -10,6 +10,7 @@ urlpatterns = [
     path('admin/list/', admin.admin_list_view),
     path('admin/add/', admin.admin_add_view),
     path('admin/<int:nid>/edit/', admin.admin_edit_view),
+    path('admin/<int:nid>/delete/', admin.admin_del_view),
 
     # 會員的管理
 ]

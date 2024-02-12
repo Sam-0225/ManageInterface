@@ -85,3 +85,9 @@ def admin_edit_view(request, nid):
         return redirect('/admin/list/')
     return render(request, 'data_add.html', {'form': form, 'title': title})
 
+def admin_del_view(request, nid):
+    """刪除管理員"""
+    models.Admin.objects.filter(id=nid).delete()
+    return redirect('/admin/list/')
+
+
