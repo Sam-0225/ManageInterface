@@ -39,3 +39,8 @@ def login_view(request):
 
     return render(request, 'login.html', {'form': form})
 
+
+def logout_view(request):
+    """登出"""
+    request.session.flush()
+    return redirect('/login/')

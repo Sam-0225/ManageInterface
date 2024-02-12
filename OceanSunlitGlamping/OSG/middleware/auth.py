@@ -15,7 +15,6 @@ class AuthMiddleware(MiddlewareMixin):
 
         # 1. 讀取送請求之用戶的session，如果能讀到，說明已登入，繼續往後訪問
         info_dict = request.session.get('info')
-        print(info_dict)
         if info_dict:
             return
 

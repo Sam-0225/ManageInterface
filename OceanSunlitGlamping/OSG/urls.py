@@ -17,4 +17,6 @@ urlpatterns = [
 
     # 登入
     path('login/', account.login_view),
+    # 登出
+    path('logout/', account.logout_view),
 ]
