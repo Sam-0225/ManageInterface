@@ -83,6 +83,13 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 
+# 快取設置
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
+
 ROOT_URLCONF = 'OceanSunlitGlamping.urls'
 
 TEMPLATES = [
