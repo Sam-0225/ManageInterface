@@ -141,6 +141,10 @@ STATICFILES_DIR = [
     os.path.join(BASE_DIR, 'staticfiles')
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
 #DRF全域設定
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
