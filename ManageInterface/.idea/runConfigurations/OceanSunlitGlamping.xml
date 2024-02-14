@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="OceanSunlitGlamping" type="Python.DjangoServer" factoryName="Django server">
-    <module name="OceanSunlitGlamping" />
+    <module name="ManageInterface" />
     <option name="ENV_FILES" value="" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
