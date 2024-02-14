@@ -1,2 +1,2 @@
-# Camp
-位於磯崎附近的看海營區
+# ManageInterface
+管理員增刪改查功能
